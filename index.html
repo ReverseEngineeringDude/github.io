@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" media="(prefers-color-scheme: light)" content="#8448FE" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0000FF" />
+  <title>My Portfolio</title>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .profile-transform {
+      transition: all 0.5s ease-in-out;
+    }
+    .dud {
+      opacity: 0.5;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full p-4 bg-white bg-opacity-90 backdrop-blur-md shadow-md z-50 hidden dark:bg-gray-800 dark:bg-opacity-90" id="navbar">
+    <div class="container mx-auto flex items-center justify-between">
+      <!-- Transformed Profile Picture -->
+      <div class="w-10 h-10 rounded-full overflow-hidden shadow-lg" id="navbar-profile">
+        <img src="profile.jpg" alt="Praveen MT" class="w-full h-full object-cover">
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="flex items-center space-x-6">
+        <a href="#about" class="text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400">About</a>
+        <a href="#projects" class="text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400">Projects</a>
+        <a href="#contact" class="text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400">Contact</a>
+
+        <!-- Dark Mode Toggle Button -->
+        <button id="dark-mode-toggle" class="p-2 rounded-full focus:outline-none">
+          <svg id="dark-mode-icon" class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="moon-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            <path id="sun-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+    <!-- Profile Picture Card -->
+    <div class="w-48 h-48 rounded-lg overflow-hidden shadow-2xl transform hover:scale-105 transition-transform">
+      <img src="https://i.imgur.com/ETtj5Ma.jpeg" alt="Praveen MT" class="w-full h-full object-cover">
+    </div>
+
+    <!-- Dynamic Text with Scramble Effect -->
+    <h1 class="mt-8 text-4xl font-bold">
+      I am <span class="text-yellow-300 text"></span>
+    </h1>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8 dark:text-white">About Me</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <!-- Techy Card -->
+        <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+          <h3 class="text-2xl font-semibold mb-4 dark:text-white">Who Am I?</h3>
+          <p class="text-gray-700 dark:text-gray-300">
+            I'm a passionate <span class="text-blue-500 dark:text-blue-400">Developer</span> with a love for solving complex problems.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Projects Section -->
+<section id="projects" class="py-16 bg-white dark:bg-gray-900">
+  <div class="cards-container overflow-hidden relative">
+    <div class="cards flex flex-nowrap space-x-4 overflow-x-auto h-[250px]" tabindex="0" aria-label="Project list">
+
+      <!-- YesWeCode -->
+      <div class="card red min-w-[200px]" tabindex="0">
+        <p class="tip">YesWeCode</p>
+        <p class="second-text">JavaScript project showcasing coding demos.</p>
+      </div>
+
+      <!-- GateWayResort -->
+      <div class="card blue min-w-[200px]" tabindex="0">
+        <p class="tip">GateWayResort</p>
+        <p class="second-text">TypeScript website for resort inquiries.</p>
+      </div>
+
+      <!-- ActiveSub -->
+      <div class="card green min-w-[200px]" tabindex="0">
+        <p class="tip">ActiveSub</p>
+        <p class="second-text">Python tool for subdomain status checking.</p>
+      </div>
+
+      <!-- Pdfy -->
+      <div class="card yellow min-w-[200px]" tabindex="0">
+        <p class="tip">Pdfy</p>
+        <p class="second-text">TypeScript-based attendance PDF analyzer.</p>
+      </div>
+
+      <!-- Blind-assist -->
+      <div class="card orange min-w-[200px]" tabindex="0">
+        <p class="tip">Blind-assist</p>
+        <p class="second-text">Flutter app assisting visually impaired navigation.</p>
+      </div>
+
+      <!-- Cubeeto -->
+      <div class="card purple min-w-[200px]" tabindex="0">
+        <p class="tip">Cubeeto</p>
+        <p class="second-text">EJS project with creative web experiments.</p>
+      </div>
+
+      <!-- Gigg -->
+      <div class="card teal min-w-[200px]" tabindex="0">
+        <p class="tip">Gigg</p>
+        <p class="second-text">Automation tool written in JavaScript.</p>
+      </div>
+
+      <!-- RED (Profile Repo) -->
+      <div class="card pink min-w-[200px]" tabindex="0">
+        <p class="tip">RED</p>
+        <p class="second-text">Custom GitHub profile configuration files.</p>
+      </div>
+
+      <!-- Internship-1 -->
+      <div class="card lime min-w-[200px]" tabindex="0">
+        <p class="tip">Internship-1</p>
+        <p class="second-text">Python project (training tasks & experiments).</p>
+      </div>
+
+      <!-- Traffic -->
+      <div class="card indigo min-w-[200px]" tabindex="0">
+        <p class="tip">Traffic</p>
+        <p class="second-text">Forked project for traffic management systems.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8 dark:text-white">Contact Me</h2>
+      <form class="max-w-lg mx-auto" id="contact-form">
+        <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Your Name</label>
+        <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-400">
+        
+        <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Your Email</label>
+        <input type="email" id="email" name="email" placeholder="Your Email" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-400">
+        
+        <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Your Message</label>
+        <textarea id="message" name="message" placeholder="Your Message" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-400" rows="5"></textarea>
+        
+        <button type="submit" id="submit-btn" class="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition">Send Message</button>
+      </form>
+    </div>
+</section>
+
+
+
+<!-- Footer -->
+<footer class="py-6 bg-gray-800 text-white text-center">
+    <p>&copy; 2025 RedCodz. All rights reserved.</p>
+  </footer>
+  <script src="scripts.js"></script>
+</body>
+</html>
