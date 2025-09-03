@@ -16,18 +16,23 @@
       opacity: 0.5;
       color: #ccc;
     }
+    /* Smooth theme transition */
+    html, body, nav, section, footer {
+      transition: background-color 0.5s ease, color 0.5s ease;
+    }
   </style>
 </head>
 <body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100">
+
   <!-- Navbar -->
   <nav class="fixed top-0 left-0 w-full p-4 bg-white bg-opacity-90 backdrop-blur-md shadow-md z-50 hidden dark:bg-gray-800 dark:bg-opacity-90" id="navbar">
     <div class="container mx-auto flex items-center justify-between">
-      <!-- Transformed Profile Picture -->
+      <!-- Profile Pic -->
       <div class="w-10 h-10 rounded-full overflow-hidden shadow-lg" id="navbar-profile">
         <img src="./img/profile.jpg" alt="Praveen MT" class="w-full h-full object-cover">
       </div>
 
-      <!-- Navigation Links -->
+      <!-- Links -->
       <div class="flex items-center space-x-6">
         <a href="#about" class="text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400">About</a>
         <a href="#projects" class="text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400">Projects</a>
@@ -36,86 +41,82 @@
     </div>
   </nav>
 
-<<<<<<< HEAD
   <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-blue-500 to-purple-600 text-white">
-    <!-- Profile Picture Card -->
+  <section id="hero" class="min-h-screen flex flex-col justify-center items-center relative text-white">
+    <div id="vanta-bg" class="absolute inset-0 -z-10"></div>
+
+    <!-- Profile Card -->
     <div class="w-48 h-48 rounded-lg overflow-hidden shadow-2xl transform hover:scale-105 transition-transform">
       <img src="./img/profile.jpg" alt="Praveen MT" class="w-full h-full object-cover">
     </div>
-=======
-<!-- Hero Section -->
-<section id="hero" class="min-h-screen flex flex-col justify-center items-center relative text-white">
-  <div id="vanta-bg" class="absolute inset-0 -z-10"></div>
->>>>>>> 4b6ac03 (bg theme fixed)
 
-  <!-- Profile Picture Card -->
-  <div class="w-48 h-48 rounded-lg overflow-hidden shadow-2xl transform hover:scale-105 transition-transform">
-    <img src="./img/profile.jpg" alt="Praveen MT" class="w-full h-full object-cover">
-  </div>
+    <!-- Scramble Text -->
+    <h1 class="mt-8 text-4xl font-bold text-center">
+      I am <span class="text-yellow-300 text"></span>
+    </h1>
+  </section>
 
-  <!-- Dynamic Text -->
-  <h1 class="mt-8 text-4xl font-bold text-center">
-    I am <span class="text-yellow-300 text"></span>
-  </h1>
-</section>
-
-
-<!-- Projects Section -->
-<section id="projects" class="py-16 bg-white dark:bg-gray-900">
-  <div class="container mx-auto px-6">
-    <h2 class="text-3xl font-bold text-center mb-10 dark:text-white">Projects</h2>
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      
-      <!-- Example Project Card -->
-      <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
-        <!-- Glow effect -->
-        <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
-        
-        <h3 class="text-xl font-semibold mb-2 text-white">YesWeCode</h3>
-        <p class="text-gray-300">JavaScript project showcasing coding demos.</p>
+  <!-- About Section -->
+  <section id="about" class="py-16 bg-gray-50 dark:bg-gray-800">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8 dark:text-white">About Me</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
+          <h3 class="text-2xl font-semibold mb-4 dark:text-white">Who Am I?</h3>
+          <p class="text-gray-700 dark:text-gray-300">
+            I'm a passionate <span class="text-blue-500 dark:text-blue-400">Developer</span> with a love for solving complex problems.
+          </p>
+        </div>
       </div>
-
-      <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
-        
-        <h3 class="text-xl font-semibold mb-2 text-white">GateWayResort</h3>
-        <p class="text-gray-300">TypeScript website for resort inquiries.</p>
-      </div>
-
-      <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
-        
-        <h3 class="text-xl font-semibold mb-2 text-white">ActiveSub</h3>
-        <p class="text-gray-300">Python tool for subdomain status checking.</p>
-      </div>
-      
-      <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
-        
-        <h3 class="text-xl font-semibold mb-2 text-white">Blind-assist</h3>
-        <p class="text-gray-300">A simple flutter app to assist visually disabled person</p>
-      </div>
-      
-      <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
-        
-        <h3 class="text-xl font-semibold mb-2 text-white">RedFly</h3>
-        <p class="text-gray-300">HID based Android Remote Controller.</p>
-      </div>
-      
-      <div onclick="window.location.href = 'https://github.com/ReverseEngineeringDude';"class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
-        
-        <h3 class="text-xl font-semibold mb-2 text-white">For more..</h3>
-        <p class="text-gray-300">Check out my github.</p>
-      </div>
-
-      <!-- Keep repeating for your projects -->
-      
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="py-16 bg-white dark:bg-gray-900">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-10 dark:text-white">Projects</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        
+        <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
+          <h3 class="text-xl font-semibold mb-2 text-white">YesWeCode</h3>
+          <p class="text-gray-300">JavaScript project showcasing coding demos.</p>
+        </div>
+
+        <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
+          <h3 class="text-xl font-semibold mb-2 text-white">GateWayResort</h3>
+          <p class="text-gray-300">TypeScript website for resort inquiries.</p>
+        </div>
+
+        <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
+          <h3 class="text-xl font-semibold mb-2 text-white">ActiveSub</h3>
+          <p class="text-gray-300">Python tool for subdomain status checking.</p>
+        </div>
+
+        <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
+          <h3 class="text-xl font-semibold mb-2 text-white">Blind-assist</h3>
+          <p class="text-gray-300">A Flutter app to assist visually impaired persons.</p>
+        </div>
+
+        <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
+          <h3 class="text-xl font-semibold mb-2 text-white">RedFly</h3>
+          <p class="text-gray-300">HID based Android Remote Controller.</p>
+        </div>
+
+        <div onclick="window.location.href = 'https://github.com/ReverseEngineeringDude';"
+             class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden cursor-pointer">
+          <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
+          <h3 class="text-xl font-semibold mb-2 text-white">For more..</h3>
+          <p class="text-gray-300">Check out my GitHub.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
   <!-- Contact Section -->
   <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-800">
@@ -123,30 +124,33 @@
       <h2 class="text-3xl font-bold text-center mb-8 dark:text-white">Contact Me</h2>
       <form class="max-w-lg mx-auto" id="contact-form">
         <label for="name" class="block text-gray-700 dark:text-gray-300 mb-2">Your Name</label>
-        <input type="text" id="name" name="name" placeholder="Your Name" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-400">
-        
+        <input type="text" id="name" name="name" placeholder="Your Name" required
+          class="w-full p-3 mb-4 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-400">
+
         <label for="email" class="block text-gray-700 dark:text-gray-300 mb-2">Your Email</label>
-        <input type="email" id="email" name="email" placeholder="Your Email" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-400">
-        
+        <input type="email" id="email" name="email" placeholder="Your Email" required
+          class="w-full p-3 mb-4 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-400">
+
         <label for="message" class="block text-gray-700 dark:text-gray-300 mb-2">Your Message</label>
-        <textarea id="message" name="message" placeholder="Your Message" required class="w-full p-3 mb-4 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-400" rows="5"></textarea>
-        
-        <button type="submit" id="submit-btn" class="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition">Send Message</button>
+        <textarea id="message" name="message" placeholder="Your Message" required rows="5"
+          class="w-full p-3 mb-4 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white focus:ring-2 focus:ring-blue-400"></textarea>
+
+        <button type="submit" id="submit-btn"
+          class="w-full bg-blue-500 text-white p-3 rounded-lg hover:bg-blue-600 transition">Send Message</button>
       </form>
     </div>
-</section>
+  </section>
 
-
-
-<!-- Footer -->
-<footer class="py-6 bg-gray-800 text-white text-center">
+  <!-- Footer -->
+  <footer class="py-6 bg-gray-800 text-white text-center">
     <p>&copy; 2025 RedCodz. All rights reserved.</p>
   </footer>
-  <!-- Add Vanta.js scripts before </body> -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.net.min.js"></script>
-<script src="scripts.js"></script>
-<script>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.net.min.js"></script>
+  <script src="scripts.js"></script>
+  <script>
   VANTA.NET({
     el: "#vanta-bg",
     mouseControls: true,
@@ -165,4 +169,3 @@
 </script>
 </body>
 </html>
-
