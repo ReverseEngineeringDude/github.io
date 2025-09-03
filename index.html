@@ -32,112 +32,87 @@
         <a href="#about" class="text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400">About</a>
         <a href="#projects" class="text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400">Projects</a>
         <a href="#contact" class="text-gray-700 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400">Contact</a>
-
-        <!-- Dark Mode Toggle Button -->
-        <button id="dark-mode-toggle" class="p-2 rounded-full focus:outline-none">
-          <svg id="dark-mode-icon" class="w-6 h-6 text-gray-700 dark:text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path id="moon-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-            <path id="sun-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-        </button>
       </div>
     </div>
   </nav>
 
+<<<<<<< HEAD
   <!-- Hero Section -->
   <section class="min-h-screen flex flex-col justify-center items-center bg-gradient-to-r from-blue-500 to-purple-600 text-white">
     <!-- Profile Picture Card -->
     <div class="w-48 h-48 rounded-lg overflow-hidden shadow-2xl transform hover:scale-105 transition-transform">
       <img src="./img/profile.jpg" alt="Praveen MT" class="w-full h-full object-cover">
     </div>
+=======
+<!-- Hero Section -->
+<section id="hero" class="min-h-screen flex flex-col justify-center items-center relative text-white">
+  <div id="vanta-bg" class="absolute inset-0 -z-10"></div>
+>>>>>>> 4b6ac03 (bg theme fixed)
 
-    <!-- Dynamic Text with Scramble Effect -->
-    <h1 class="mt-8 text-4xl font-bold">
-      I am <span class="text-yellow-300 text"></span>
-    </h1>
-  </section>
+  <!-- Profile Picture Card -->
+  <div class="w-48 h-48 rounded-lg overflow-hidden shadow-2xl transform hover:scale-105 transition-transform">
+    <img src="./img/profile.jpg" alt="Praveen MT" class="w-full h-full object-cover">
+  </div>
 
-  <!-- About Section -->
-  <section id="about" class="py-16 bg-gray-50 dark:bg-gray-800">
-    <div class="container mx-auto px-4">
-      <h2 class="text-3xl font-bold text-center mb-8 dark:text-white">About Me</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <!-- Techy Card -->
-        <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200 dark:bg-gray-700 dark:border-gray-600">
-          <h3 class="text-2xl font-semibold mb-4 dark:text-white">Who Am I?</h3>
-          <p class="text-gray-700 dark:text-gray-300">
-            I'm a passionate <span class="text-blue-500 dark:text-blue-400">Developer</span> with a love for solving complex problems.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- Dynamic Text -->
+  <h1 class="mt-8 text-4xl font-bold text-center">
+    I am <span class="text-yellow-300 text"></span>
+  </h1>
+</section>
+
 
 <!-- Projects Section -->
 <section id="projects" class="py-16 bg-white dark:bg-gray-900">
-  <div class="cards-container overflow-hidden relative">
-    <div class="cards flex flex-nowrap space-x-4 overflow-x-auto h-[250px]" tabindex="0" aria-label="Project list">
-
-      <!-- YesWeCode -->
-      <div class="card red min-w-[200px]" tabindex="0">
-        <p class="tip">YesWeCode</p>
-        <p class="second-text">JavaScript project showcasing coding demos.</p>
+  <div class="container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center mb-10 dark:text-white">Projects</h2>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      
+      <!-- Example Project Card -->
+      <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
+        <!-- Glow effect -->
+        <div class="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-600 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
+        
+        <h3 class="text-xl font-semibold mb-2 text-white">YesWeCode</h3>
+        <p class="text-gray-300">JavaScript project showcasing coding demos.</p>
       </div>
 
-      <!-- GateWayResort -->
-      <div class="card blue min-w-[200px]" tabindex="0">
-        <p class="tip">GateWayResort</p>
-        <p class="second-text">TypeScript website for resort inquiries.</p>
+      <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-green-400 to-blue-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
+        
+        <h3 class="text-xl font-semibold mb-2 text-white">GateWayResort</h3>
+        <p class="text-gray-300">TypeScript website for resort inquiries.</p>
       </div>
 
-      <!-- ActiveSub -->
-      <div class="card green min-w-[200px]" tabindex="0">
-        <p class="tip">ActiveSub</p>
-        <p class="second-text">Python tool for subdomain status checking.</p>
+      <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
+        
+        <h3 class="text-xl font-semibold mb-2 text-white">ActiveSub</h3>
+        <p class="text-gray-300">Python tool for subdomain status checking.</p>
+      </div>
+      
+      <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
+        
+        <h3 class="text-xl font-semibold mb-2 text-white">Blind-assist</h3>
+        <p class="text-gray-300">A simple flutter app to assist visually disabled person</p>
+      </div>
+      
+      <div class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
+        
+        <h3 class="text-xl font-semibold mb-2 text-white">RedFly</h3>
+        <p class="text-gray-300">HID based Android Remote Controller.</p>
+      </div>
+      
+      <div onclick="window.location.href = 'https://github.com/ReverseEngineeringDude';"class="group bg-gradient-to-br from-gray-800 to-gray-900 dark:from-gray-700 dark:to-gray-800 rounded-2xl shadow-lg p-6 hover:scale-105 hover:shadow-2xl transition transform relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover:opacity-20 blur-xl transition"></div>
+        
+        <h3 class="text-xl font-semibold mb-2 text-white">For more..</h3>
+        <p class="text-gray-300">Check out my github.</p>
       </div>
 
-      <!-- Pdfy -->
-      <div class="card yellow min-w-[200px]" tabindex="0">
-        <p class="tip">Pdfy</p>
-        <p class="second-text">TypeScript-based attendance PDF analyzer.</p>
-      </div>
-
-      <!-- Blind-assist -->
-      <div class="card orange min-w-[200px]" tabindex="0">
-        <p class="tip">Blind-assist</p>
-        <p class="second-text">Flutter app assisting visually impaired navigation.</p>
-      </div>
-
-      <!-- Cubeeto -->
-      <div class="card purple min-w-[200px]" tabindex="0">
-        <p class="tip">Cubeeto</p>
-        <p class="second-text">EJS project with creative web experiments.</p>
-      </div>
-
-      <!-- Gigg -->
-      <div class="card teal min-w-[200px]" tabindex="0">
-        <p class="tip">Gigg</p>
-        <p class="second-text">Automation tool written in JavaScript.</p>
-      </div>
-
-      <!-- RED (Profile Repo) -->
-      <div class="card pink min-w-[200px]" tabindex="0">
-        <p class="tip">RED</p>
-        <p class="second-text">Custom GitHub profile configuration files.</p>
-      </div>
-
-      <!-- Internship-1 -->
-      <div class="card lime min-w-[200px]" tabindex="0">
-        <p class="tip">Internship-1</p>
-        <p class="second-text">Python project (training tasks & experiments).</p>
-      </div>
-
-      <!-- Traffic -->
-      <div class="card indigo min-w-[200px]" tabindex="0">
-        <p class="tip">Traffic</p>
-        <p class="second-text">Forked project for traffic management systems.</p>
-      </div>
-
+      <!-- Keep repeating for your projects -->
+      
     </div>
   </div>
 </section>
@@ -167,7 +142,27 @@
 <footer class="py-6 bg-gray-800 text-white text-center">
     <p>&copy; 2025 RedCodz. All rights reserved.</p>
   </footer>
-  <script src="scripts.js"></script>
+  <!-- Add Vanta.js scripts before </body> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.net.min.js"></script>
+<script src="scripts.js"></script>
+<script>
+  VANTA.NET({
+    el: "#vanta-bg",
+    mouseControls: true,
+    touchControls: true,
+    gyroControls: false,
+    minHeight: 200.00,
+    minWidth: 200.00,
+    scale: 1.0,
+    scaleMobile: 1.0,
+    color: 0x3b82f6,     // Blue
+    backgroundColor: 0x111827, // Dark gray/black
+    points: 12.0,
+    maxDistance: 20.0,
+    spacing: 18.0
+  })
+</script>
 </body>
 </html>
 

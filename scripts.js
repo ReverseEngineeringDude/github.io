@@ -1,164 +1,244 @@
-
-// TextScramble Effect
+// TextScramble Effect - Optimized version
 class TextScramble {
-    constructor(el) {
+  constructor(el) {
     this.el = el;
     this.chars = '!<>-_\\/[]{}—=+*^?#________';
     this.update = this.update.bind(this);
-    }
-    setText(newText) {
+    this.frame = 0;
+    this.queue = [];
+    this.resolve = null;
+    this.frameRequest = null;
+  }
+
+  setText(newText) {
     const oldText = this.el.innerText;
     const length = Math.max(oldText.length, newText.length);
     const promise = new Promise((resolve) => (this.resolve = resolve));
+
     this.queue = [];
     for (let i = 0; i < length; i++) {
-        const from = oldText[i] || '';
-        const to = newText[i] || '';
-        const start = Math.floor(Math.random() * 40);
-        const end = start + Math.floor(Math.random() * 40);
-        this.queue.push({ from, to, start, end });
+      const from = oldText[i] || '';
+      const to = newText[i] || '';
+      const start = Math.floor(Math.random() * 40);
+      const end = start + Math.floor(Math.random() * 40);
+      this.queue.push({ from, to, start, end });
     }
+
     cancelAnimationFrame(this.frameRequest);
     this.frame = 0;
     this.update();
     return promise;
-    }
-    update() {
+  }
+
+  update() {
     let output = '';
     let complete = 0;
+
     for (let i = 0, n = this.queue.length; i < n; i++) {
-        let { from, to, start, end, char } = this.queue[i];
-        if (this.frame >= end) {
+      let { from, to, start, end, char } = this.queue[i];
+
+      if (this.frame >= end) {
         complete++;
         output += to;
-        } else if (this.frame >= start) {
+      } else if (this.frame >= start) {
         if (!char || Math.random() < 0.28) {
-            char = this.randomChar();
-            this.queue[i].char = char;
+          char = this.randomChar();
+          this.queue[i].char = char;
         }
         output += `<span class="dud">${char}</span>`;
-        } else {
+      } else {
         output += from;
-        }
+      }
     }
+
     this.el.innerHTML = output;
+
     if (complete === this.queue.length) {
-        this.resolve();
+      this.resolve();
     } else {
-        this.frameRequest = requestAnimationFrame(this.update);
-        this.frame++;
+      this.frameRequest = requestAnimationFrame(this.update);
+      this.frame++;
     }
-    }
-    randomChar() {
+  }
+
+  randomChar() {
     return this.chars[Math.floor(Math.random() * this.chars.length)];
-    }
+  }
 }
 
-// Phrases to scramble
-const phrases = [
+// Initialize Text Scramble
+function initTextScramble() {
+  const phrases = [
     'Developer',
     'Tech Enthusiast',
     'Hacker',
-    'Ai developer',
+    'AI Developer',
     'Python Developer',
     'Reverse Engineer',
     'Web Developer',
     'Robotics Engineer'
-];
+  ];
 
-const el = document.querySelector('.text');
-const fx = new TextScramble(el);
+  const el = document.querySelector('.text');
+  if (!el) return;
 
-let counter = 0;
-const next = () => {
-    fx.setText(phrases[counter]).then(() => {
-    setTimeout(next, 1000); // Delay before next phrase
-    });
+  const fx = new TextScramble(el);
+  let counter = 0;
+  let scrambleInterval = null;
+
+  const next = () => {
+    fx.setText(phrases[counter]).then(() => {});
     counter = (counter + 1) % phrases.length;
-};
+  };
 
-next();
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        next();
+        scrambleInterval = setInterval(next, 2000);
+      } else {
+        if (scrambleInterval) {
+          clearInterval(scrambleInterval);
+          scrambleInterval = null;
+        }
+      }
+    });
+  }, { threshold: 0.5 });
 
-// Navbar Scroll Effect
-const navbar = document.getElementById("navbar");
-const profile = document.getElementById("navbar-profile");
-
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 100) {
-    navbar.classList.remove("hidden");
-    profile.classList.add("profile-transform");
-    } else {
-    navbar.classList.add("hidden");
-    profile.classList.remove("profile-transform");
-    }
-});
-
-// Dark Mode Toggle
-const darkModeToggle = document.getElementById("dark-mode-toggle");
-const darkModeIcon = document.getElementById("dark-mode-icon");
-const moonIcon = document.getElementById("moon-icon");
-const sunIcon = document.getElementById("sun-icon");
-
-if (localStorage.getItem("dark-mode") === "enabled") {
-    document.documentElement.classList.add("dark");
-    moonIcon.classList.add("hidden");
-    sunIcon.classList.remove("hidden");
-} else {
-    document.documentElement.classList.remove("dark");
-    moonIcon.classList.remove("hidden");
-    sunIcon.classList.add("hidden");
+  observer.observe(el);
 }
 
-darkModeToggle.addEventListener("click", () => {
-    document.documentElement.classList.toggle("dark");
+// Navbar Scroll Effect
+function initNavbar() {
+  const navbar = document.getElementById("navbar");
+  const profile = document.getElementById("navbar-profile");
+  if (!navbar || !profile) return;
 
-    if (document.documentElement.classList.contains("dark")) {
-    localStorage.setItem("dark-mode", "enabled");
-    moonIcon.classList.add("hidden");
-    sunIcon.classList.remove("hidden");
+  let ticking = false;
+
+  const updateNavbar = () => {
+    if (window.scrollY > 100) {
+      navbar.classList.remove("hidden");
+      profile.classList.add("profile-transform");
     } else {
-    localStorage.setItem("dark-mode", "disabled");
-    moonIcon.classList.remove("hidden");
-    sunIcon.classList.add("hidden");
+      navbar.classList.add("hidden");
+      profile.classList.remove("profile-transform");
     }
-});
+    ticking = false;
+  };
 
-document.getElementById("contact-form").addEventListener("submit", function(event) {
+  const requestTick = () => {
+    if (!ticking) {
+      requestAnimationFrame(updateNavbar);
+      ticking = true;
+    }
+  };
+
+  window.addEventListener("scroll", requestTick, { passive: true });
+}
+
+// Contact form validation
+function initContactForm() {
+  const contactForm = document.getElementById("contact-form");
+  if (!contactForm) return;
+
+  contactForm.addEventListener("submit", function(event) {
     event.preventDefault();
-    let submitBtn = document.getElementById("submit-btn");
+
+    const submitBtn = document.getElementById("submit-btn");
+    const nameInput = document.getElementById("name");
+    const emailInput = document.getElementById("email");
+    const messageInput = document.getElementById("message");
+
+    if (!nameInput.value.trim() || !emailInput.value.trim() || !messageInput.value.trim()) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailInput.value)) {
+      alert("Please enter a valid email address");
+      return;
+    }
+
     submitBtn.textContent = "Sending...";
     submitBtn.disabled = true;
-    
+
     setTimeout(() => {
-        alert("Message sent successfully!");
-        submitBtn.textContent = "Send Message";
-        submitBtn.disabled = false;
-        document.getElementById("contact-form").reset();
-    }, 2000);
-});
+      alert(`Thank you, ${nameInput.value}! Your message has been sent.`);
+      submitBtn.textContent = "Send Message";
+      submitBtn.disabled = false;
+      this.reset();
+    }, 1500);
+  });
+}
 
+// Projects horizontal scrolling (legacy, safe to keep if needed)
+function initProjectsScrolling() {
+  const cardsContainer = document.querySelector(".cards-container");
+  if (!cardsContainer) return;
 
-document.addEventListener("DOMContentLoaded", function () {
-    const cardsContainer = document.querySelector(".cards-container");
-    cardsContainer.addEventListener("wheel", function (event) {
-        if (cardsContainer.scrollLeft + cardsContainer.clientWidth < cardsContainer.scrollWidth) {
-            event.preventDefault();
-            cardsContainer.scrollLeft += event.deltaY;
-        }
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  cardsContainer.addEventListener('mousedown', (e) => {
+    isDown = true;
+    startX = e.pageX - cardsContainer.offsetLeft;
+    scrollLeft = cardsContainer.scrollLeft;
+  });
+
+  cardsContainer.addEventListener('mouseleave', () => { isDown = false; });
+  cardsContainer.addEventListener('mouseup', () => { isDown = false; });
+
+  cardsContainer.addEventListener('mousemove', (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - cardsContainer.offsetLeft;
+    const walk = (x - startX) * 2;
+    cardsContainer.scrollLeft = scrollLeft - walk;
+  });
+
+  // Touch support
+  cardsContainer.addEventListener('touchstart', (e) => {
+    isDown = true;
+    startX = e.touches[0].pageX - cardsContainer.offsetLeft;
+    scrollLeft = cardsContainer.scrollLeft;
+  }, { passive: true });
+
+  cardsContainer.addEventListener('touchend', () => { isDown = false; });
+
+  cardsContainer.addEventListener('touchmove', (e) => {
+    if (!isDown) return;
+    const x = e.touches[0].pageX - cardsContainer.offsetLeft;
+    const walk = (x - startX) * 2;
+    cardsContainer.scrollLeft = scrollLeft - walk;
+  }, { passive: true });
+}
+
+// Smooth scrolling
+function initSmoothScrolling() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
-});
+  });
+}
 
-// window.onload = function() {
-//     document.addEventListener("click", function openFullscreen() {
-//         if (document.documentElement.requestFullscreen) {
-//             document.documentElement.requestFullscreen();
-//         } else if (document.documentElement.mozRequestFullScreen) { // Firefox
-//             document.documentElement.mozRequestFullScreen();
-//         } else if (document.documentElement.webkitRequestFullscreen) { // Chrome, Safari
-//             document.documentElement.webkitRequestFullscreen();
-//         } else if (document.documentElement.msRequestFullscreen) { // IE/Edge
-//             document.documentElement.msRequestFullscreen();
-//         }
-//         document.removeEventListener("click", openFullscreen); // Remove listener after activation
-//     });
-// };
+
+
+// === Init All ===
+document.addEventListener("DOMContentLoaded", function() {
+  initTextScramble();
+  initNavbar();
+  initContactForm();
+  initProjectsScrolling();
+  initSmoothScrolling();
+
+  // Disable right-click
+  document.addEventListener('contextmenu', e => e.preventDefault());
+});
